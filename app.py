@@ -1,4 +1,4 @@
-from flask import Flask, url_for, request
+from flask import Flask, url_for, request, render_template
 from markupsafe import escape       # to prevent output info from injection
 
 # app name as filename
@@ -52,3 +52,13 @@ def login_post():
 #     print(url_for('home'))
 #     print(url_for("show_user_profile", name="Abraham Ayamigah"))
 #     print(url_for("show_post", post_id=300))
+
+# static files 
+#url_for('static', filename='styles.css')
+
+
+# rendering templates
+@app.route('/hello/')
+@app.route('/hello/<name>')
+def hello(name=None):
+    return render_template('./hello.html', name=name)
